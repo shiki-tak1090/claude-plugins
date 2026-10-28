@@ -22,7 +22,14 @@ Backlog には接続しない。課題のステータス変更やコメントは
 
 1. コードリポジトリの直下で実行されていること。親フォルダにドキュメントリポジトリ（`../<案件名>_document`）があること。
 2. `git status` に未コミットの変更がないこと。あれば、進めてよいか確認する。
-3. `gh auth status` で GitHub CLI にログインしていること（PR の作成に使う）。ログインしていなければ、本人に `gh auth login` を実行してもらう。
+3. **Git の置き場所を判定する。** `git remote get-url origin` の URL で判定し、以降の PR の操作に使うツールを決める。
+
+   | URL に含まれるもの | 置き場所 | PR のツール | ログインの確認 |
+   |---|---|---|---|
+   | `github.com` | GitHub | GitHub CLI（`gh`） | `gh auth status` |
+   | `dev.azure.com` または `visualstudio.com` | Azure DevOps | Azure CLI（`az repos`） | `az account show` と `az extension show --name azure-devops` |
+
+   どちらでもなければ止まり、ユーザーに置き場所を聞く。ログインしていなければ、本人に `gh auth login` または `az login` を実行してもらう（代わりに実行しない）。
 
 ## 1. タスクを読む
 
@@ -37,7 +44,7 @@ Backlog には接続しない。課題のステータス変更やコメントは
 
 - **「未決事項」が「なし」であること。** 未決事項が残っていれば、実装に着手せずに止まり、未決事項の一覧を見せる。ユーザーには、設計書を直してから `design-to-tasks` でタスクを更新するよう伝える。ユーザーがその場で決めた内容を示した場合も、その内容を設計書に反映してから着手する（設計書が正であるため）。
 - **対象リポジトリが、このリポジトリと一致すること。** 違えば止まり、正しいリポジトリを伝える。
-- **依存するタスクが終わっていること。** 依存先のブランチが `develop` にマージされているかを、`git log` や PR の状態（`gh pr list --search <タスク ID>`）で確かめる。終わっていなければ、進めてよいか確認する。
+- **依存するタスクが終わっていること。** 依存先のブランチが `develop` にマージされているかを、`git log` や PR の状態で確かめる。PR の状態は、GitHub なら `gh pr list --state all --search <タスク ID>`、Azure DevOps なら `az repos pr list --status all --query "[?contains(title, '<タスク ID>')].{id:pullRequestId, status:status, title:title}"` で調べる。終わっていなければ、進めてよいか確認する。
 - **Backlog の課題キーがあれば控える。** タスク一覧の表に記入されていれば、それを使う。なければユーザーに聞く（まだ起票していなければ、タスク ID で代用してよい）。
 
 ## 2. 設計を読む
@@ -96,7 +103,14 @@ Backlog には接続しない。課題のステータス変更やコメントは
 1. コミットの前に、実装した振る舞いがすべて設計書か受け入れ条件に書かれていることを確かめる。書かれていない振る舞いが 1 つでもあれば、コミットせずに止まって確認する。
 2. 変更をコミットする。コミットメッセージの先頭に課題キー（なければタスク ID）を付ける（例: `ACME-123 お気に入り登録 API を追加`）。
 3. PR の内容を下書きし、push 先のブランチと一緒にユーザーに見せて了承を得る。
-4. 了承を得たら、push して `gh pr create --base develop` で PR を作る。
+4. 了承を得たら、push して、置き場所に合わせたコマンドで `develop` 向けの PR を作る。
+
+   | 置き場所 | PR を作るコマンド |
+   |---|---|
+   | GitHub | `gh pr create --base develop --title "<タイトル>" --body-file <本文のファイル>` |
+   | Azure DevOps | `az repos pr create --target-branch develop --source-branch <作業ブランチ> --title "<タイトル>" --description "<本文>"` |
+
+   Azure DevOps の PR の説明は 4,000 文字までなので、本文が長くなる場合は、テスト結果などを要約して収める。
 
 PR の本文は次の形にする。
 

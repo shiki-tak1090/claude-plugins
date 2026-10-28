@@ -1,0 +1,19 @@
+{
+  "name": "project-plugins",
+  "description": "プロジェクトのドキュメント作成と開発を支援するプラグイン",
+  "owner": {
+    "name": "shiki-tak1090"
+  },
+  "plugins": [
+    {
+      "name": "project-docs",
+      "source": "./plugins/project-docs",
+      "description": "設計書の作成（敵対的レビュー・推敲付き）と、Word・Excel への変換"
+    },
+    {
+      "name": "project-dev",
+      "source": "./plugins/project-dev",
+      "description": "詳細設計の実装タスクへの分解と、設計どおりの実装・照合レビュー・PR 作成"
+    }
+  ]
+}

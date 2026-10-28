@@ -10,6 +10,7 @@
 | | `/project-docs:design-export` | 設計書を Word・Excel に変換し、内容の欠落を照合する |
 | `project-dev` | `/project-dev:design-to-tasks` | 確定した詳細設計を、PR 1 つ分の実装タスクに分解する（Backlog に貼る文面付き） |
 | | `/project-dev:implement` | タスクを設計どおりに実装し、設計との照合レビューを経て PR を作る |
+| | `/project-dev:setup-architecture` | 基本設計のアーキテクチャの方針を、コードリポジトリの実装規約（CLAUDE.md）と、依存の向きなどを機械的に検査する仕組みに落とし込む |
 
 Backlog には接続しません。課題の起票、コメント、ステータスの変更は人が行い、スキルは貼り付ける文面を用意します。
 

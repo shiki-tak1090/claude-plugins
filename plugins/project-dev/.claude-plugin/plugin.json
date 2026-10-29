@@ -1,7 +1,7 @@
 {
   "name": "project-dev",
   "description": "確定した詳細設計を PR 単位の実装タスクに分解するスキルと、タスクを設計どおりに実装し、独立したレビュアーの照合を経て PR を作るスキル",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "author": {
     "name": "shiki-tak1090"
   }

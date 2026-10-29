@@ -1,7 +1,7 @@
 {
   "name": "project-docs",
   "description": "要件定義書から基本設計書・詳細設計書を Markdown で作成し、独立したレビュアーの敵対的レビューと推敲を経て仕上げるスキルと、設計書を Word・Excel に変換して内容の欠落を照合するスキル",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "author": {
     "name": "shiki-tak1090"
   }

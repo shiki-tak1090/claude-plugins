@@ -1,4 +1,4 @@
-"""設計書 Markdown（system-design の markdown-rules.md の範囲）をブロック列に分解する共通モジュール。
+"""設計書 Markdown（design-export の references/markdown-rules.md の範囲）をブロック列に分解する共通モジュール。
 
 変換スクリプトと照合スクリプトが同じ解釈で Markdown を読むために使う。
 """

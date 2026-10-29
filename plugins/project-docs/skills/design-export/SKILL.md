@@ -1,12 +1,12 @@
 ---
 name: design-export
-description: Markdown で書いた設計書（system-design スキルの成果物）を、納品用の Word（docx）や Excel（xlsx）に変換するスキル。変換は決まったスクリプトで行い、変換後のファイルから文字を抜き出して正本の Markdown と突き合わせ、欠落・順序違い・ID の不一致がないことを機械的に確認する。「設計書を Word にして」「Excel で納品したい」「docx に変換」「納品用に出力」などの依頼で使う。設計書の内容を作ったり直したりする用途には使わない。
+description: Markdown で書いた設計書（basic-design・detailed-design スキルの成果物）を、納品用の Word（docx）や Excel（xlsx）に変換するスキル。変換は決まったスクリプトで行い、変換後のファイルから文字を抜き出して正本の Markdown と突き合わせ、欠落・順序違い・ID の不一致がないことを機械的に確認する。「設計書を Word にして」「Excel で納品したい」「docx に変換」「納品用に出力」などの依頼で使う。設計書の内容を作ったり直したりする用途には使わない。
 argument-hint: "docx | xlsx [変換する Markdown のパスまたはフォルダ...]"
 ---
 
 # 設計書の変換スキル（Markdown → Word / Excel）
 
-正本の Markdown を、納品用の Word や Excel に変換する。**このスキルは設計書の内容を一切変えない。** 内容の正しさは `system-design` スキルのレビューで担保済みとし、ここでは「変換で何も失われていないこと」だけを保証する。
+正本の Markdown を、納品用の Word や Excel に変換する。**このスキルは設計書の内容を一切変えない。** 内容の正しさは `basic-design` と `detailed-design` スキルのレビューで担保済みとし、ここでは「変換で何も失われていないこと」だけを保証する。
 
 ## 基本方針
 
@@ -86,7 +86,7 @@ PYTHONIOENCODING=utf-8 uv run ${CLAUDE_SKILL_DIR}/scripts/verify_export.py <変�
 
 | 原因 | 対応 |
 |---|---|
-| 変換元の Markdown が [記法ルール](${CLAUDE_PLUGIN_ROOT}/skills/system-design/references/markdown-rules.md) の範囲外の記法を使っている | 記法だけを直す修正案をユーザーに示し、了承を得てから Markdown を直す。文言や内容は変えない |
+| 変換元の Markdown が [記法ルール](${CLAUDE_SKILL_DIR}/references/markdown-rules.md) の範囲外の記法を使っている | 記法だけを直す修正案をユーザーに示し、了承を得てから Markdown を直す。文言や内容は変えない |
 | スクリプトの不具合（記法ルールの範囲内なのに崩れる） | スクリプトを直し、**これまで変換したファイルもすべて変換と照合をやり直す** |
 | 警告「ID の増加」 | テンプレートの表紙などに含まれる ID なら問題ない。そうでなければ重複出力を疑ってスクリプトを調べる |
 | 警告「図にしか書かれていない ID」 | 変換の問題ではないが、記法ルール違反なので、本文か表への追記をユーザーに提案する |

@@ -6,7 +6,7 @@
 
 | プラグイン | スキル | 内容 |
 |---|---|---|
-| `project-docs` | `/project-docs:system-design` | 要件定義書から基本設計書・詳細設計書を作成し、敵対的レビューと推敲を経て仕上げる |
+| `project-docs` | `/project-docs:system-design` | 要件定義書から基本設計書・詳細設計書を作成する。前提と判断事項を人に決めてもらい、粒度を分けて書き、文書ごとと横断のレビュー、指摘の仕分け、推敲を経て仕上げる |
 | | `/project-docs:design-export` | 設計書を Word・Excel に変換し、内容の欠落を照合する |
 | `project-dev` | `/project-dev:design-to-tasks` | 確定した詳細設計を、PR 1 つ分の実装タスクに分解する（Backlog に貼る文面付き） |
 | | `/project-dev:implement` | タスクを設計どおりに実装し、設計との照合レビューを経て PR を作る |

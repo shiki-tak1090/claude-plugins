@@ -8,7 +8,7 @@
     {
       "name": "project-docs",
       "source": "./plugins/project-docs",
-      "description": "設計書の作成（敵対的レビュー・推敲付き）と、Word・Excel への変換"
+      "description": "設計書の作成（前提と判断の整理、粒度を分けた敵対的レビューと横断レビュー、推敲付き）と、Word・Excel への変換"
     },
     {
       "name": "project-dev",

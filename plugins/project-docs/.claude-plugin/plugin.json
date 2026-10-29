@@ -1,7 +1,7 @@
 {
   "name": "project-docs",
   "description": "要件定義書から基本設計の納品物を作る basic-design と、機能ごとの詳細設計を作る detailed-design（どちらも独立したレビュアーの敵対的レビューと推敲付き）と、設計書を Word・Excel に変換して内容の欠落を照合する design-export",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "author": {
     "name": "shiki-tak1090"
   }
